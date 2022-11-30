@@ -10,11 +10,9 @@ class ZHURequest {
     });
     this.instance.interceptors.response.use(
       (res) => {
-        console.log("res=", res);
         return res.data;
       },
       (err) => {
-        console.log("err=", err);
         return err;
       }
     );

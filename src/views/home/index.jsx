@@ -11,14 +11,16 @@ import HomeHousingResourceV2 from "./c-cpns/home-housing-resourcev2";
 import { isEmptyO } from "@/utils";
 
 const Home = memo(() => {
-  const { goodPriceInfo, highScoreInfo, discountInfo } = useSelector(
-    (state) => ({
-      goodPriceInfo: state.home.goodPriceInfo,
-      highScoreInfo: state.home.highScoreInfo,
-      discountInfo: state.home.discountInfo,
-    }),
-    shallowEqual
-  );
+  const { goodPriceInfo, highScoreInfo, discountInfo, hotRecommendInfo } =
+    useSelector(
+      (state) => ({
+        goodPriceInfo: state.home.goodPriceInfo,
+        highScoreInfo: state.home.highScoreInfo,
+        discountInfo: state.home.discountInfo,
+        hotRecommendInfo: state.home.hotRecommendInfo,
+      }),
+      shallowEqual
+    );
   const dispatch = useDispatch();
   //请求home页面房源数据
   useEffect(() => {
@@ -43,6 +45,10 @@ const Home = memo(() => {
         {/* 热门目的地 */}
         {isEmptyO(discountInfo) && (
           <HomeHousingResourceV2 houseResourceData={discountInfo} />
+        )}
+        {/* 热门精彩房源 */}
+        {isEmptyO(hotRecommendInfo) && (
+          <HomeHousingResourceV2 houseResourceData={hotRecommendInfo} />
         )}
         {/* 高性价比房源 ---判断是否为空，避免多次渲染提高性能*/}
         {isEmptyO(goodPriceInfo) && (

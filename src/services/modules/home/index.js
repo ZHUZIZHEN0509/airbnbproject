@@ -20,3 +20,10 @@ export const getHomeDiscountData = () => {
     url: "/home/discount",
   });
 };
+
+//获取热门精彩房源
+export const getHomeHotRecommendData = () => {
+  return ZHURequest.get({
+    url: "/home/hotrecommenddest",
+  });
+};

@@ -3,6 +3,7 @@ import {
   getHomeGoodPriceData,
   getHomeHighScoreData,
   getHomeDiscountData,
+  getHomeHotRecommendData,
 } from "@/services";
 
 export const fetchHomeDataAction = createAsyncThunk(
@@ -25,15 +26,20 @@ export const fetchHomeDataAction = createAsyncThunk(
     getHomeDiscountData().then((res) => {
       dispatch(changeDiscountInfoAction(res));
     });
+    //设置热门精彩房源
+    getHomeHotRecommendData().then((res) => {
+      dispatch(changeHotRecommendInfoAction(res));
+    });
   }
 );
 
 const homeSlice = createSlice({
   name: "home",
   initialState: {
-    goodPriceInfo: {},
-    highScoreInfo: {},
-    discountInfo: {},
+    goodPriceInfo: {}, //高性价比房源
+    highScoreInfo: {}, //高分好评房源
+    discountInfo: {}, //热门目的地
+    hotRecommendInfo: {}, //热门精彩房源
   },
   reducers: {
     changeGoodPriceInfoAction(state, { payload }) {
@@ -44,6 +50,9 @@ const homeSlice = createSlice({
     },
     changeDiscountInfoAction(state, { payload }) {
       state.discountInfo = payload;
+    },
+    changeHotRecommendInfoAction(state, { payload }) {
+      state.hotRecommendInfo = payload;
     },
   },
   extraReducers: {
@@ -57,5 +66,6 @@ export const {
   changeGoodPriceInfoAction,
   changeHighScoreInfoAction,
   changeDiscountInfoAction,
+  changeHotRecommendInfoAction,
 } = homeSlice.actions;
 export default homeSlice.reducer;

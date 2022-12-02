@@ -9,18 +9,25 @@ import { fetchHomeDataAction } from "@/store/modules/home";
 import HomeHousingResourceV1 from "./c-cpns/home-housing-resourcev1";
 import HomeHousingResourceV2 from "./c-cpns/home-housing-resourcev2";
 import { isEmptyO } from "@/utils";
+import HomeLongfor from "./c-cpns/home-longfor";
 
 const Home = memo(() => {
-  const { goodPriceInfo, highScoreInfo, discountInfo, hotRecommendInfo } =
-    useSelector(
-      (state) => ({
-        goodPriceInfo: state.home.goodPriceInfo,
-        highScoreInfo: state.home.highScoreInfo,
-        discountInfo: state.home.discountInfo,
-        hotRecommendInfo: state.home.hotRecommendInfo,
-      }),
-      shallowEqual
-    );
+  const {
+    goodPriceInfo,
+    highScoreInfo,
+    discountInfo,
+    hotRecommendInfo,
+    longforInfo,
+  } = useSelector(
+    (state) => ({
+      goodPriceInfo: state.home.goodPriceInfo,
+      highScoreInfo: state.home.highScoreInfo,
+      discountInfo: state.home.discountInfo,
+      hotRecommendInfo: state.home.hotRecommendInfo,
+      longforInfo: state.home.longforInfo,
+    }),
+    shallowEqual
+  );
   const dispatch = useDispatch();
   //请求home页面房源数据
   useEffect(() => {
@@ -50,6 +57,8 @@ const Home = memo(() => {
         {isEmptyO(hotRecommendInfo) && (
           <HomeHousingResourceV2 houseResourceData={hotRecommendInfo} />
         )}
+        {/* 你可能想去 */}
+        {isEmptyO(longforInfo) && <HomeLongfor longforData={longforInfo} />}
         {/* 高性价比房源 ---判断是否为空，避免多次渲染提高性能*/}
         {isEmptyO(goodPriceInfo) && (
           <HomeHousingResourceV1 houseResourceData={goodPriceInfo} />

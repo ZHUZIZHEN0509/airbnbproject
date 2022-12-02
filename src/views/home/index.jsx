@@ -3,13 +3,16 @@ import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import HomeBanner from "./c-cpns/home-banner";
 import { HomeWrapper } from "./style";
 import { fetchHomeDataAction } from "@/store/modules/home";
-import RoomHeader from "@/components/room-header";
-import RoomList from "@/components/room-list";
+// import RoomHeader from "@/components/room-header";
+// import RoomList from "@/components/room-list";
+//使用高性价比房源和高分房源二次封装组件
+import HomeHousingResourceV1 from "./c-cpns/home-housing-resourcev1";
 
 const Home = memo(() => {
-  const { goodPriceInfo } = useSelector(
+  const { goodPriceInfo, highScoreInfo } = useSelector(
     (state) => ({
       goodPriceInfo: state.home.goodPriceInfo,
+      highScoreInfo: state.home.highScoreInfo,
     }),
     shallowEqual
   );
@@ -23,8 +26,20 @@ const Home = memo(() => {
     <HomeWrapper>
       <HomeBanner />
       <div className="roomBox">
-        <RoomHeader title={goodPriceInfo.title} />
-        <RoomList roomList={goodPriceInfo.list} />
+        {/* 高性价比房源 */}
+        {/* <RoomHeader title={goodPriceInfo.title} />
+        <RoomList roomList={goodPriceInfo.list} /> */}
+
+        {/* 高分好评房源 */}
+        {/* <RoomHeader
+          title={highScoreInfo.title}
+          subTitle={highScoreInfo.subtitle}
+        />
+        <RoomList roomList={highScoreInfo.list} /> */}
+
+        {/* 高性价比房源 */}
+        <HomeHousingResourceV1 houseResourceData={goodPriceInfo} />
+        <HomeHousingResourceV1 houseResourceData={highScoreInfo} />
       </div>
     </HomeWrapper>
   );

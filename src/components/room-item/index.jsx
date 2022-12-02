@@ -1,13 +1,12 @@
 import React, { memo } from "react";
 import PropTypes from "prop-types";
 import { Rate } from "antd";
-import Button from "@mui/material/Button";
 import { RoomItemWrapper } from "./style";
 
 const RoomItem = memo((props) => {
-  const { item } = props;
+  const { item, itemWidth = "25%" } = props;
   return (
-    <RoomItemWrapper>
+    <RoomItemWrapper itemWidth={itemWidth}>
       <div className="roomImageBox">
         <img className="yesImage" src={item.picture_url} alt="" />
       </div>
@@ -42,6 +41,7 @@ const RoomItem = memo((props) => {
 
 RoomItem.propTypes = {
   item: PropTypes.object,
+  itemWidth: PropTypes.string,
 };
 
 export default RoomItem;

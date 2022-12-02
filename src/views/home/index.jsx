@@ -7,12 +7,15 @@ import { fetchHomeDataAction } from "@/store/modules/home";
 // import RoomList from "@/components/room-list";
 //使用高性价比房源和高分房源二次封装组件
 import HomeHousingResourceV1 from "./c-cpns/home-housing-resourcev1";
+import HomeHousingResourceV2 from "./c-cpns/home-housing-resourcev2";
+import { isEmptyO } from "@/utils";
 
 const Home = memo(() => {
-  const { goodPriceInfo, highScoreInfo } = useSelector(
+  const { goodPriceInfo, highScoreInfo, discountInfo } = useSelector(
     (state) => ({
       goodPriceInfo: state.home.goodPriceInfo,
       highScoreInfo: state.home.highScoreInfo,
+      discountInfo: state.home.discountInfo,
     }),
     shallowEqual
   );
@@ -37,9 +40,18 @@ const Home = memo(() => {
         />
         <RoomList roomList={highScoreInfo.list} /> */}
 
-        {/* 高性价比房源 */}
-        <HomeHousingResourceV1 houseResourceData={goodPriceInfo} />
-        <HomeHousingResourceV1 houseResourceData={highScoreInfo} />
+        {/* 热门目的地 */}
+        {isEmptyO(discountInfo) && (
+          <HomeHousingResourceV2 houseResourceData={discountInfo} />
+        )}
+        {/* 高性价比房源 ---判断是否为空，避免多次渲染提高性能*/}
+        {isEmptyO(goodPriceInfo) && (
+          <HomeHousingResourceV1 houseResourceData={goodPriceInfo} />
+        )}
+        {/* 高分好评房源*/}
+        {isEmptyO(highScoreInfo) && (
+          <HomeHousingResourceV1 houseResourceData={highScoreInfo} />
+        )}
       </div>
     </HomeWrapper>
   );

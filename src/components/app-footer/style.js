@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const FooterWrapper = styled.div`
   border-top: 1px solid #ebebeb;
+  margin-top: 100px;
   .footerBox {
     padding: 72px 24px;
     max-width: 1080px;

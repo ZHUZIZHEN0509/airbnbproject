@@ -13,3 +13,10 @@ export const getHomeHighScoreData = () => {
     url: "/home/highScore",
   });
 };
+
+//获取热门目的地
+export const getHomeDiscountData = () => {
+  return ZHURequest.get({
+    url: "/home/discount",
+  });
+};

@@ -27,3 +27,10 @@ export const getHomeHotRecommendData = () => {
     url: "/home/hotrecommenddest",
   });
 };
+
+//获取你可能想去数据
+export const getHomeLongforData = () => {
+  return ZHURequest.get({
+    url: "/home/longfor",
+  });
+};

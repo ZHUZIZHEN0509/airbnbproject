@@ -4,6 +4,7 @@ import {
   getHomeHighScoreData,
   getHomeDiscountData,
   getHomeHotRecommendData,
+  getHomeLongforData,
 } from "@/services";
 
 export const fetchHomeDataAction = createAsyncThunk(
@@ -30,6 +31,10 @@ export const fetchHomeDataAction = createAsyncThunk(
     getHomeHotRecommendData().then((res) => {
       dispatch(changeHotRecommendInfoAction(res));
     });
+    //设置你可能想去数据
+    getHomeLongforData().then((res) => {
+      dispatch(changeHomeLongforInfoAction(res));
+    });
   }
 );
 
@@ -40,6 +45,7 @@ const homeSlice = createSlice({
     highScoreInfo: {}, //高分好评房源
     discountInfo: {}, //热门目的地
     hotRecommendInfo: {}, //热门精彩房源
+    longforInfo: {}, //你可能想去
   },
   reducers: {
     changeGoodPriceInfoAction(state, { payload }) {
@@ -54,6 +60,9 @@ const homeSlice = createSlice({
     changeHotRecommendInfoAction(state, { payload }) {
       state.hotRecommendInfo = payload;
     },
+    changeHomeLongforInfoAction(state, { payload }) {
+      state.longforInfo = payload;
+    },
   },
   extraReducers: {
     // [fetchHomeDataAction.fulfilled](state, { payload }) {
@@ -67,5 +76,6 @@ export const {
   changeHighScoreInfoAction,
   changeDiscountInfoAction,
   changeHotRecommendInfoAction,
+  changeHomeLongforInfoAction,
 } = homeSlice.actions;
 export default homeSlice.reducer;

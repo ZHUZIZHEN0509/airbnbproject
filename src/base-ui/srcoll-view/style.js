@@ -2,11 +2,12 @@ import styled from "styled-components";
 
 export const ScrollViewWrapper = styled.div`
   position: relative;
-  padding: 8px 0;
+  /* padding: 16px 8px; */
   .scrollContainer {
     overflow: hidden;
     .tabsBox {
       display: flex;
+      transition: transform 250ms ease;
     }
     .btn {
       width: 28px;

@@ -1,4 +1,5 @@
 import React, { memo, useEffect, useRef, useState } from "react";
+import PropTypes from "prop-types";
 import IconArrowLeft from "@/assets/svg/icon-arrow-left";
 import IconArrowRight from "@/assets/svg/icon-arrow-right";
 import { ScrollViewWrapper } from "./style";
@@ -11,6 +12,7 @@ import { ScrollViewWrapper } from "./style";
  */
 
 const ScrollView = memo((props) => {
+  const { tabsStyle = { padding: "16px 0px" } } = props;
   const tasInstance = useRef();
   const [isShowRight, setShowRight] = useState(false);
   const [isShowLeft, setShowLeft] = useState(false);
@@ -45,7 +47,7 @@ const ScrollView = memo((props) => {
     setShowRight(scrollDistance.current > distance);
   }
   return (
-    <ScrollViewWrapper>
+    <ScrollViewWrapper style={tabsStyle}>
       <div className="scrollContainer">
         {isShowLeft && (
           <div className="btn btnLeft" onClick={() => handleTabsClick(-1)}>
@@ -64,5 +66,9 @@ const ScrollView = memo((props) => {
     </ScrollViewWrapper>
   );
 });
+
+ScrollView.propTypes = {
+  tabsStyle: PropTypes.object,
+};
 
 export default ScrollView;

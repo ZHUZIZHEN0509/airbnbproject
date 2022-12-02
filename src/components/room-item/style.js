@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const RoomItemWrapper = styled.div`
-  width: 25%;
+  width: ${(props) => props.itemWidth};
   padding: 8px 8px 12px;
   box-sizing: border-box;
   .roomImageBox {
@@ -35,6 +35,11 @@ export const RoomItemWrapper = styled.div`
       font-weight: 800;
       margin-top: 4px;
       cursor: pointer;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
     }
     .infoPrice {
       color: ${(props) => props.theme.text.primaryColor};

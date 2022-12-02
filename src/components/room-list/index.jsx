@@ -4,12 +4,12 @@ import { RoomListWrapper } from "./style";
 import RoomItem from "../room-item";
 
 const RoomList = memo((props) => {
-  const { roomList } = props;
+  const { roomList, itemWidth } = props;
   return (
     <RoomListWrapper>
       {roomList &&
         roomList.slice(0, 8).map((item) => {
-          return <RoomItem key={item.id} item={item} />;
+          return <RoomItem key={item.id} item={item} itemWidth={itemWidth} />;
         })}
     </RoomListWrapper>
   );
@@ -17,6 +17,7 @@ const RoomList = memo((props) => {
 
 RoomList.propTypes = {
   roomList: PropTypes.array,
+  itemWidth: PropTypes.string,
 };
 
 export default RoomList;

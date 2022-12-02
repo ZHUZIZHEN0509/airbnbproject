@@ -8,5 +8,6 @@ export const HeaderWrapper = styled.div`
     font-size: 16px;
     line-height: 24px;
     margin-top: 12px;
+    margin-bottom: 20px;
   }
 `;

@@ -13,6 +13,8 @@ export const RoomTabsWrapper = styled.div`
     font-weight: bold;
     cursor: pointer;
     text-align: center;
+    box-sizing: border-box;
+    white-space: nowrap;
     ${(props) => props.theme.mixin.boxShadow}
   }
   .activeItem {

@@ -13,7 +13,7 @@ module.exports = {
       "@": resolve("src"),
       components: resolve("src/components"),
       utils: resolve("src/utils"),
-      "@mui/styled-engine": "@mui/styled-engine-sc",
+      // "@mui/styled-engine": "@mui/styled-engine-sc",
     },
   },
 };

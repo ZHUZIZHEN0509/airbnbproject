@@ -34,3 +34,10 @@ export const getHomeLongforData = () => {
     url: "/home/longfor",
   });
 };
+
+//获取plus房源
+export const getHomePlusData = () => {
+  return ZHURequest.get({
+    url: "/home/plus",
+  });
+};

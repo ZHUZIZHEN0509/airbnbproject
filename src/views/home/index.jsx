@@ -10,6 +10,7 @@ import HomeHousingResourceV1 from "./c-cpns/home-housing-resourcev1";
 import HomeHousingResourceV2 from "./c-cpns/home-housing-resourcev2";
 import { isEmptyO } from "@/utils";
 import HomeLongfor from "./c-cpns/home-longfor";
+import HomeHousingResourceV3 from "./c-cpns/home-housing-resourcev3";
 
 const Home = memo(() => {
   const {
@@ -18,6 +19,7 @@ const Home = memo(() => {
     discountInfo,
     hotRecommendInfo,
     longforInfo,
+    plusInfo,
   } = useSelector(
     (state) => ({
       goodPriceInfo: state.home.goodPriceInfo,
@@ -25,6 +27,7 @@ const Home = memo(() => {
       discountInfo: state.home.discountInfo,
       hotRecommendInfo: state.home.hotRecommendInfo,
       longforInfo: state.home.longforInfo,
+      plusInfo: state.home.plusInfo,
     }),
     shallowEqual
   );
@@ -66,6 +69,10 @@ const Home = memo(() => {
         {/* 高分好评房源*/}
         {isEmptyO(highScoreInfo) && (
           <HomeHousingResourceV1 houseResourceData={highScoreInfo} />
+        )}
+        {/* plus房源 */}
+        {isEmptyO(plusInfo) && (
+          <HomeHousingResourceV3 houseResourceData={plusInfo} />
         )}
       </div>
     </HomeWrapper>

@@ -6,7 +6,7 @@ import { ScrollViewWrapper } from "./style";
 /***
  * 思路：
  *   1.可滚动距离 = 总滚动距离 - 可见区域距离
- *   2.移动距离 = 元素距左边的offsetLeft距离
+ *   2.移动距离 = 元素距左边的offsetLeft距离***offsetLeft相对于最近的定位元素或body,th,td,table
  *   3.当移动距离大于0，显示左侧按钮。
  *   4.当可滚动距离大于移动距离，显示右侧按钮。否则隐藏
  */
@@ -36,6 +36,7 @@ const ScrollView = memo((props) => {
     const index = currentIndex + offsetIndex;
     //获取需要滚动距离
     const itemInstance = tasInstance.current.children[index];
+    /***offsetLeft相对于最近的定位元素或body,th,td,table */
     const distance = itemInstance.offsetLeft;
     //设置移动
     tasInstance.current.style = `transform: translate(-${distance}px,0)`;

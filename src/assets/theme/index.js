@@ -8,9 +8,6 @@ const Theme = {
     secondColor: "#222222",
     threeColor: "#767676",
   },
-  bgColor: {
-    primaryColor: "#008489",
-  },
   size: {
     oneSize: "16px",
     twoSize: "12px",

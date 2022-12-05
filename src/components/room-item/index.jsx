@@ -9,7 +9,7 @@ import Indicator from "@/base-ui/indicator";
 import { useState } from "react";
 
 const RoomItem = memo((props) => {
-  const { item, itemWidth = "25%", pictureUrls = [] } = props;
+  const { item, itemWidth = "25%", pictureUrls = [], roomItemClick } = props;
   const [selectIndex, setSelectIndex] = useState(0);
   const carouselRef = useRef();
 
@@ -69,8 +69,13 @@ const RoomItem = memo((props) => {
     setSelectIndex(currentIndex);
   }
 
+  //roomItem点击
+  function handleItemClick(event) {
+    if (roomItemClick) roomItemClick();
+  }
+
   return (
-    <RoomItemWrapper itemWidth={itemWidth}>
+    <RoomItemWrapper itemWidth={itemWidth} onClick={handleItemClick}>
       {/* <div className="roomImageBox">
         <img className="yesImage" src={item.picture_url} alt="" />
       </div> */}
@@ -146,6 +151,7 @@ RoomItem.propTypes = {
   item: PropTypes.object,
   itemWidth: PropTypes.string,
   pictureUrls: PropTypes.array,
+  roomItemClick: PropTypes.func,
 };
 
 export default RoomItem;

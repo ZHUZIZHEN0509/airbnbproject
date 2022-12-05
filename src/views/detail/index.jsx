@@ -1,29 +1,23 @@
-import Indicator from "@/base-ui/indicator";
-import { DetailWrapper } from "./style";
 import React, { memo, useState } from "react";
+import { shallowEqual, useSelector } from "react-redux";
+import DetailPicture from "./c-cpns/detail-picture";
+import { DetailWrapper } from "./style";
 
 const Detail = memo(() => {
-  const [index, setIndex] = useState(0);
-  const list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  function handleIndicatorClick(item) {
-    setIndex(item);
-  }
+  const { detailInfo } = useSelector(
+    (state) => ({
+      detailInfo: state.detail.detailInfo,
+    }),
+    shallowEqual
+  );
+  console.log(detailInfo);
   return (
     <DetailWrapper>
-      Detail
-      <Indicator clickIndex={index}>
-        {list.map((item, i) => {
-          return (
-            <div
-              key={item}
-              className="item"
-              onClick={(e) => handleIndicatorClick(i)}
-            >
-              <span> {item}</span>
-            </div>
-          );
-        })}
-      </Indicator>
+      {detailInfo.picture_urls && detailInfo.picture_urls.length > 0 ? (
+        <DetailPicture pictureUrls={detailInfo.picture_urls} />
+      ) : (
+        ""
+      )}
     </DetailWrapper>
   );
 });

@@ -13,7 +13,12 @@ const EntireRoom = memo((props) => {
       <div className="roomListBox">
         {roomList?.map((roomItem) => {
           return (
-            <RoomItem key={roomItem._id} item={roomItem} itemWidth={"20%"} />
+            <RoomItem
+              key={roomItem._id}
+              item={roomItem}
+              itemWidth={"20%"}
+              pictureUrls={roomItem.picture_urls}
+            />
           );
         })}
       </div>

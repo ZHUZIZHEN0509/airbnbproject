@@ -21,6 +21,71 @@ export const RoomItemWrapper = styled.div`
       border-radius: 3px;
     }
   }
+  .pictureBox {
+    position: relative;
+    .btn {
+      width: 83px;
+      height: 100%;
+      background-color: #00848a;
+      position: absolute;
+      top: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(
+        to left,
+        transparent 0%,
+        rgba(0, 0, 0, 0.25) 100%
+      );
+      color: #ffffff;
+      cursor: pointer;
+      display: none;
+    }
+    .btnLeft {
+      left: 0;
+    }
+    .btnRight {
+      right: 0;
+      background: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(0, 0, 0, 0.25) 100%
+      );
+    }
+    &:hover {
+      .btn {
+        display: flex;
+      }
+    }
+
+    .bottomIndicator {
+      position: absolute;
+      bottom: 7%;
+      z-index: 9;
+      width: 30%;
+      left: 50%;
+      transform: translate(-50%, 0);
+      .dotBox {
+        width: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .dot {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background-color: #fff;
+          display: inline-block;
+          cursor: pointer;
+        }
+        .activeDot {
+          width: 8px;
+          height: 8px;
+        }
+      }
+    }
+  }
+
   .roomInfo {
     padding: 8px 0px 0px;
     .infoMessage {

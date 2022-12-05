@@ -8,7 +8,6 @@ const Indicator = memo((props) => {
   const { clickIndex } = props;
   const indicatorRef = useRef();
   useEffect(() => {
-    console.log(clickIndex);
     //总滚动距离
     const scrollDistance = indicatorRef.current.scrollWidth;
     //可见区域宽度
@@ -24,13 +23,11 @@ const Indicator = memo((props) => {
     const leftDistance = offsetLeftDistance + selectInstanceWidth * 0.5;
     //元素需要移动的距离
     let moveDistance = leftDistance - clientDistance * 0.5;
-    // let moveDistance = 0;
     //如果元素移动距离小于0就不移动了
     if (moveDistance < 0) moveDistance = 0;
     //如果元素移动距离比总滚动距离大也不移动了
     if (moveDistance > distanceTotal) moveDistance = distanceTotal;
     //移动元素
-    console.log(-moveDistance);
     indicatorRef.current.style.transform = `translate(${-moveDistance}px,0)`;
   }, [clickIndex]);
 

@@ -13,6 +13,52 @@ const RoomItem = memo((props) => {
   const [selectIndex, setSelectIndex] = useState(0);
   const carouselRef = useRef();
 
+  //单个图片
+  const oneImage = (
+    <div className="roomImageBox">
+      <img className="yesImage" src={item.picture_url} alt="" />
+    </div>
+  );
+  //多个图片
+  const twoImage = (
+    <div className="pictureBox">
+      <Carousel
+        dots={false}
+        ref={carouselRef}
+        afterChange={handleCarouselChange}
+      >
+        {pictureUrls.map((picture) => {
+          return (
+            <div key={picture} className="roomImageBox">
+              <img src={picture} alt="" className="yesImage" />
+            </div>
+          );
+        })}
+      </Carousel>
+      <div className="btn btnLeft" onClick={(e) => cutImage(true)}>
+        <IconArrowLeft width="24" height="24" />
+      </div>
+      <div className="btn btnRight" onClick={(e) => cutImage(false)}>
+        <IconArrowRight width="24" height="24" />
+      </div>
+      <div className="bottomIndicator">
+        <Indicator clickIndex={selectIndex}>
+          {pictureUrls.map((item, index) => {
+            return (
+              <div key={item} className="dotBox">
+                <span
+                  className={classNames("dot", {
+                    activeDot: selectIndex === index,
+                  })}
+                ></span>
+              </div>
+            );
+          })}
+        </Indicator>
+      </div>
+    </div>
+  );
+
   //轮播图切换
   function cutImage(isLeft) {
     isLeft ? carouselRef.current.prev() : carouselRef.current.next();
@@ -28,7 +74,7 @@ const RoomItem = memo((props) => {
       {/* <div className="roomImageBox">
         <img className="yesImage" src={item.picture_url} alt="" />
       </div> */}
-      <div className="pictureBox">
+      {/* <div className="pictureBox">
         <Carousel
           dots={false}
           ref={carouselRef}
@@ -63,7 +109,10 @@ const RoomItem = memo((props) => {
             })}
           </Indicator>
         </div>
-      </div>
+      </div> */}
+      {Array.isArray(pictureUrls) && pictureUrls.length > 0
+        ? twoImage
+        : oneImage}
       <div className="roomInfo">
         <div
           className="infoMessage"

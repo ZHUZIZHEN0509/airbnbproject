@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { LongforItemWrapper } from "./style";
 
 const LongforItem = memo((props) => {
-  console.log(props);
   const {
     longforData: { city, price, picture_url },
   } = props;

@@ -1,6 +1,6 @@
 import React, { memo, useState } from "react";
 import PropTypes from "prop-types";
-import { useDispatch, useSelector } from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import Pagination from "@mui/material/Pagination";
 import {
   changeCurrentPageAction,
@@ -11,10 +11,13 @@ import { EntirePaginationWrapper } from "./style";
 const EntirePagination = memo((props) => {
   // const [totalPage, setTotalPage] = useState(0);
   const dispatch = useDispatch();
-  const { totalCount, currentPage } = useSelector((state) => ({
-    totalCount: state.entire.totalCount,
-    currentPage: state.entire.currentPage,
-  }));
+  const { totalCount, currentPage } = useSelector(
+    (state) => ({
+      totalCount: state.entire.totalCount,
+      currentPage: state.entire.currentPage,
+    }),
+    shallowEqual
+  );
   //总页数
   const totalPage = Math.ceil(totalCount / 20);
   //start

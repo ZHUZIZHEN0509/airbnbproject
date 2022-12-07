@@ -15,7 +15,6 @@ const EntireFilter = memo(() => {
       newSelectList.push(item);
     }
     setSelectList(newSelectList);
-    console.log(newSelectList);
   }
 
   return (

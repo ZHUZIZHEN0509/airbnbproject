@@ -16,7 +16,6 @@ const HomeHousingResourceV2 = memo((props) => {
   const tabList = houseResourceData.dest_address?.map(({ name }) => name);
 
   const tabItemClick = useCallback((itemname) => {
-    console.log(itemname);
     setName(itemname);
   }, []);
 

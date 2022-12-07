@@ -11,10 +11,6 @@ import {
 export const fetchHomeDataAction = createAsyncThunk(
   "fetchHomeData",
   async (extraArg, { dispatch, getState }) => {
-    // const res = await getHomeGoodPriceData();
-    // console.log("res=", res);
-    // return res;
-
     //获取多个请求的数据
     //设置高性价比房源
     getHomeGoodPriceData().then((res) => {

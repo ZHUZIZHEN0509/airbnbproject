@@ -15,7 +15,6 @@ const HomeLongfor = memo((props) => {
       <div className="contentBox">
         <ScrollView>
           {list.map((item, index) => {
-            console.log(item);
             return <LongforItem longforData={item} key={item.city} />;
           })}
         </ScrollView>

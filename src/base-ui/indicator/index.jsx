@@ -5,7 +5,7 @@ import { useRef } from "react";
 import { useEffect } from "react";
 
 const Indicator = memo((props) => {
-  const { clickIndex } = props;
+  const { clickIndex = 0 } = props;
   const indicatorRef = useRef();
   useEffect(() => {
     //总滚动距离

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const EntireRoomWrapper = styled.div`
-  margin-top: 48px;
+  margin-top: 128px;
   padding: 30px 20px;
   position: relative;
   .roomListBox {

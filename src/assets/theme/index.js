@@ -14,6 +14,7 @@ const Theme = {
   size: {
     oneSize: "16px",
     twoSize: "12px",
+    threeSize: "14px",
   },
   //boxshadow公用样式混入
   mixin: {

@@ -16,14 +16,14 @@ root.render(
   /**被suspense包裹的组件不会监听，异步加载的js文件页面发出去的事件的 。解决将suspense组件放到provider组件内部
    * 异步加载后组件会被渲染两次，第一次loading，第二次suspense
    */
-  <Suspense fallback="loading">
-    <Provider store={store}>
+  <Provider store={store}>
+    <Suspense fallback="loading">
       <ThemeProvider theme={theme}>
         <HashRouter>
           <App />
         </HashRouter>
       </ThemeProvider>
-    </Provider>
-  </Suspense>
+    </Suspense>
+  </Provider>
   // </React.StrictMode>
 );

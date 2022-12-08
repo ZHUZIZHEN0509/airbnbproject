@@ -11,6 +11,7 @@ import HomeHousingResourceV2 from "./c-cpns/home-housing-resourcev2";
 import { isEmptyO } from "@/utils";
 import HomeLongfor from "./c-cpns/home-longfor";
 import HomeHousingResourceV3 from "./c-cpns/home-housing-resourcev3";
+import { changeHeaderConfigAction } from "@/store/modules/main";
 
 const Home = memo(() => {
   const {
@@ -35,6 +36,8 @@ const Home = memo(() => {
   //请求home页面房源数据
   useEffect(() => {
     dispatch(fetchHomeDataAction());
+    //设置home页面导航栏是否固定
+    dispatch(changeHeaderConfigAction({ isFixed: true, isTopAlpha: true }));
   }, [dispatch]);
 
   return (

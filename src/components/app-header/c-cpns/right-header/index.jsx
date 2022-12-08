@@ -1,10 +1,11 @@
 import React, { memo, useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import { RightWrapper } from "./style";
 import IconGlobal from "@/assets/svg/icon_global";
 import IconMenu from "@/assets/svg/icon_menu";
 import IconAvatar from "@/assets/svg/icon_avatar";
 
-const RightHeader = memo(() => {
+const RightHeader = memo((props) => {
   const [showList, setShowList] = useState(false);
   //监听window点击关闭
   useEffect(() => {

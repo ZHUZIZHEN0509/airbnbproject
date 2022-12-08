@@ -4,6 +4,12 @@ export const EntireRoomWrapper = styled.div`
   margin-top: 128px;
   padding: 30px 20px;
   position: relative;
+  .title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #222;
+    margin: 0 0 10px 10px;
+  }
   .roomListBox {
     display: flex;
     flex-wrap: wrap;

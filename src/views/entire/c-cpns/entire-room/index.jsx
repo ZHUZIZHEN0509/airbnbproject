@@ -5,11 +5,12 @@ import { changeDetailInfoAction } from "@/store/modules/detail";
 import { EntireRoomWrapper } from "./style";
 import RoomItem from "@/components/room-item";
 
-const EntireRoom = memo((props) => {
-  const { roomList, isLoading } = useSelector(
+const EntireRoom = memo(() => {
+  const { roomList, isLoading, totalCount } = useSelector(
     (state) => ({
       roomList: state.entire.roomList,
       isLoading: state.entire.isLoading,
+      totalCount: state.entire.totalCount,
     }),
     shallowEqual
   );
@@ -22,6 +23,7 @@ const EntireRoom = memo((props) => {
   }
   return (
     <EntireRoomWrapper>
+      <h2 className="title">{totalCount}多处住所</h2>
       <div className="roomListBox">
         {roomList?.map((roomItem) => {
           return (

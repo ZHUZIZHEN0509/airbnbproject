@@ -1,15 +1,11 @@
-import React, { memo, useState } from "react";
+import React, { memo } from "react";
 import PropTypes from "prop-types";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import Pagination from "@mui/material/Pagination";
-import {
-  changeCurrentPageAction,
-  fetchRoomListAction,
-} from "@/store/modules/entire/createActions";
+import { fetchRoomListAction } from "@/store/modules/entire/createActions";
 import { EntirePaginationWrapper } from "./style";
 
 const EntirePagination = memo((props) => {
-  // const [totalPage, setTotalPage] = useState(0);
   const dispatch = useDispatch();
   const { totalCount, currentPage } = useSelector(
     (state) => ({

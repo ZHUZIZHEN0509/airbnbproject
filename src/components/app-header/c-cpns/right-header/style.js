@@ -6,12 +6,15 @@ export const RightWrapper = styled.div`
   justify-content: flex-end;
   .btnBox {
     display: flex;
+    color: ${(props) =>
+      props.theme.isAlpha ? "#ffffff" : props.theme.text.primaryColor};
     div {
       padding: 12px;
       cursor: pointer;
       border-radius: 22px;
       &:hover {
-        background-color: #f5f5f5;
+        background-color: ${(props) =>
+          props.theme.isAlpha ? "rgba(255,255,255,.1)" : "#f5f5f5"};
       }
     }
   }
@@ -28,6 +31,7 @@ export const RightWrapper = styled.div`
     color: ${(props) => props.theme.text.primaryColor};
     //混入样式
     ${(props) => props.theme.mixin.boxShadow}
+    background-color: #ffffff;
     position: relative;
     .menuRight {
       margin-left: 12px;

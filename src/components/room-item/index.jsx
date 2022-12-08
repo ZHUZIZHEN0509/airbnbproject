@@ -35,10 +35,10 @@ const RoomItem = memo((props) => {
           );
         })}
       </Carousel>
-      <div className="btn btnLeft" onClick={(e) => cutImage(true)}>
+      <div className="btn btnLeft" onClick={(e) => cutImage(true, e)}>
         <IconArrowLeft width="24" height="24" />
       </div>
-      <div className="btn btnRight" onClick={(e) => cutImage(false)}>
+      <div className="btn btnRight" onClick={(e) => cutImage(false, e)}>
         <IconArrowRight width="24" height="24" />
       </div>
       <div className="bottomIndicator">
@@ -60,7 +60,9 @@ const RoomItem = memo((props) => {
   );
 
   //轮播图切换
-  function cutImage(isLeft) {
+  function cutImage(isLeft, event) {
+    //阻止冒泡
+    event.stopPropagation();
     isLeft ? carouselRef.current.prev() : carouselRef.current.next();
   }
 

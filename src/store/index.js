@@ -11,6 +11,8 @@ const store = configureStore({
     detail: detailReducer,
     main: mainReducer,
   },
+  //生产环境关闭redux-devtools
+  devTools: false,
 });
 
 export default store;
